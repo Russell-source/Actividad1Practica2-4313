@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Verificar número Fibonacci";
+}
+
+<h2>¿Es Fibonacci?</h2>
+
+<form method="post">
+    <div>
+        <label for="numero">Ingresa un número:</label>
+        <input type="text" name="numero" class="form-control" />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Verificar</button>
+</form>
+
+<br />
+
+@if (ViewBag.Numero != null)
+{
+    if (!ViewBag.EsValido)
+    {
+        <div style="color:red;">
+            <strong>Error:</strong> Ingresa un número entero válido.
+        </div>
+    }
+    else if (ViewBag.EsFibonacci)
+    {
+        <div style="color:green;">
+            El número @ViewBag.Numero pertenece a la serie de Fibonacci.
+        </div>
+    }
+    else
+    {
+        <div style="color:orange;">
+            El número @ViewBag.Numero NO pertenece a la serie de Fibonacci.
+        </div>
+    }
+}

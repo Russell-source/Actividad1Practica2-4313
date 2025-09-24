@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Factura";
+}
+
+<h2>Factura</h2>
+
+<form method="post">
+    <label>Monto en RD$:</label>
+    <input type="text" name="monto" />
+
+    <br /><br />
+
+    <label>Aplicar:</label>
+    <select name="tipo">
+        <option value="ITBIS">ITBIS (18%)</option>
+        <option value="Descuento">Descuento (15%)</option>
+    </select>
+
+    <br /><br />
+    <button type="submit">Calcular</button>
+</form>
+
+<br />
+
+@if (ViewBag.Error != null)
+{
+    <div style="color:red;">@ViewBag.Error</div>
+}
+else if (ViewBag.Total != null)
+{
+    <div>
+        <strong>Subtotal:</strong> RD$ @ViewBag.Subtotal <br />
+        <strong>@ViewBag.Tipo aplicado:</strong> RD$ @ViewBag.Aplicado <br />
+        <strong>Total:</strong> RD$ @ViewBag.Total
+    </div>
+}
